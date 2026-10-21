@@ -1,9 +1,9 @@
 package com.hospital.dashboard.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
-/** Maps to the DOCTOR table. NOTE: the real Oracle column is license_no (not license_number) -
- *  see DoctorRepository; the JSON/Java field name licenseNumber is kept for a cleaner API. */
+/** Maps to the DOCTOR table and its child/related entities (phones, qualifications, specialization, rating, hospital affiliations). */
 public class Doctor {
 
     private Long doctorId;
@@ -14,6 +14,13 @@ public class Doctor {
     private LocalDate dateJoined;
     private String licenseNumber;
     private Integer experience;
+
+    // Related collections & attributes
+    private List<String> phones;
+    private List<String> qualifications;
+    private String specialization;
+    private Integer rating;
+    private List<HospitalAffiliation> hospitals;
 
     public Doctor() { }
 
@@ -40,4 +47,19 @@ public class Doctor {
 
     public Integer getExperience() { return experience; }
     public void setExperience(Integer experience) { this.experience = experience; }
+
+    public List<String> getPhones() { return phones; }
+    public void setPhones(List<String> phones) { this.phones = phones; }
+
+    public List<String> getQualifications() { return qualifications; }
+    public void setQualifications(List<String> qualifications) { this.qualifications = qualifications; }
+
+    public String getSpecialization() { return specialization; }
+    public void setSpecialization(String specialization) { this.specialization = specialization; }
+
+    public Integer getRating() { return rating; }
+    public void setRating(Integer rating) { this.rating = rating; }
+
+    public List<HospitalAffiliation> getHospitals() { return hospitals; }
+    public void setHospitals(List<HospitalAffiliation> hospitals) { this.hospitals = hospitals; }
 }

@@ -1,19 +1,19 @@
 package com.hospital.dashboard.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
-/**
- * Maps to the PRESCRIPTION table.
- * NOTE: real Oracle columns are p_date and dosage - there is no doctor_id,
- * patient_id, or notes column (those live on/via CONSULTATION instead).
- * The JSON field prescriptionDate maps to the SQL column p_date.
- */
+/** Maps to the PRESCRIPTION table and its junction link tables (prescription_medicine, prescription_test). */
 public class Prescription {
 
     private Long prescriptionId;
     private Long consultationId;
     private LocalDate prescriptionDate;
     private String dosage;
+
+    // Related collections
+    private List<Long> medicineIds;
+    private List<Long> testIds;
 
     public Prescription() { }
 
@@ -28,4 +28,10 @@ public class Prescription {
 
     public String getDosage() { return dosage; }
     public void setDosage(String dosage) { this.dosage = dosage; }
+
+    public List<Long> getMedicineIds() { return medicineIds; }
+    public void setMedicineIds(List<Long> medicineIds) { this.medicineIds = medicineIds; }
+
+    public List<Long> getTestIds() { return testIds; }
+    public void setTestIds(List<Long> testIds) { this.testIds = testIds; }
 }

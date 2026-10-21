@@ -43,20 +43,20 @@ export function Toolbar({
           onChange={(event) => onSearchChange(event.target.value)}
           placeholder={searchPlaceholder}
           aria-label={searchPlaceholder}
-          className="w-full rounded border border-line-strong bg-white py-1.5 pl-8 pr-3 text-sm text-ink placeholder:text-ink-soft transition-colors duration-150 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500" />
+          className="w-full rounded-md border border-line-strong bg-white py-1.5 pl-8 pr-3 text-sm text-ink placeholder:text-ink-soft transition-colors duration-150 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 shadow-xs" />
         
       </div>
 
       {filters.map((filter) =>
       <div key={filter.id} className="flex items-center gap-1.5">
-          <label htmlFor={`filter-${filter.id}`} className="text-2xs font-medium uppercase tracking-wide text-ink-soft">
+          <label htmlFor={`filter-${filter.id}`} className="text-2xs font-semibold uppercase tracking-wide text-slate-500">
             {filter.label}
           </label>
           <select
           id={`filter-${filter.id}`}
           value={filter.value}
           onChange={(event) => filter.onChange(event.target.value)}
-          className="rounded border border-line-strong bg-white px-2 py-1.5 text-sm text-ink transition-colors duration-150 focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500">
+          className="rounded-md border border-line-strong bg-white px-2 py-1.5 text-sm text-ink transition-colors duration-150 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 shadow-xs">
           
             <option value="">All</option>
             {filter.options.map((option) =>
@@ -68,13 +68,13 @@ export function Toolbar({
         </div>
       )}
 
-      {resultLabel ? <span className="text-2xs text-ink-soft tabular">{resultLabel}</span> : null}
+      {resultLabel ? <span className="text-2xs text-ink-soft tabular font-medium">{resultLabel}</span> : null}
 
       {actionLabel && onAction ?
       <button
         type="button"
         onClick={onAction}
-        className="inline-flex items-center gap-1.5 rounded bg-brand-700 px-3 py-1.5 text-sm font-medium text-white transition-colors duration-150 hover:bg-brand-800">
+        className="inline-flex items-center gap-1.5 rounded-md bg-sky-600 px-3.5 py-1.5 text-sm font-medium text-white shadow-xs transition-colors duration-150 hover:bg-sky-700">
         
           <PlusIcon size={14} aria-hidden="true" />
           {actionLabel}

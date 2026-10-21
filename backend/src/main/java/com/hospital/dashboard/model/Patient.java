@@ -1,8 +1,9 @@
 package com.hospital.dashboard.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
-/** Maps to the PATIENT table. JSON field names are camelCase; SQL columns are snake_case. */
+/** Maps to the PATIENT table and its child/related entities (phones, medical records, feedback). */
 public class Patient {
 
     private Long patientId;
@@ -13,6 +14,11 @@ public class Patient {
     private String city;
     private String area;
     private String pincode;
+
+    // Related collections
+    private List<String> phones;
+    private List<MedicalRecordDto> medicalRecords;
+    private List<FeedbackDto> feedbacks;
 
     public Patient() { }
 
@@ -39,4 +45,13 @@ public class Patient {
 
     public String getPincode() { return pincode; }
     public void setPincode(String pincode) { this.pincode = pincode; }
+
+    public List<String> getPhones() { return phones; }
+    public void setPhones(List<String> phones) { this.phones = phones; }
+
+    public List<MedicalRecordDto> getMedicalRecords() { return medicalRecords; }
+    public void setMedicalRecords(List<MedicalRecordDto> medicalRecords) { this.medicalRecords = medicalRecords; }
+
+    public List<FeedbackDto> getFeedbacks() { return feedbacks; }
+    public void setFeedbacks(List<FeedbackDto> feedbacks) { this.feedbacks = feedbacks; }
 }

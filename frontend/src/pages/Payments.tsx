@@ -151,8 +151,8 @@ export function PaymentsPage() {
     <>
       <div className="space-y-4">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-          <section className="rounded-lg border border-brand-800 bg-brand-900 p-4 text-white">
-            <p className="text-2xs font-semibold uppercase tracking-wider text-brand-200">Amount in view</p>
+          <section className="rounded-lg border border-sky-900/40 bg-gradient-to-br from-[#0c233c] via-[#0f2d4a] to-[#0a394a] p-4 text-white shadow-panel">
+            <p className="text-2xs font-semibold uppercase tracking-wider text-teal-300">Amount in view</p>
             <p className="mt-1.5 text-2xl font-semibold tracking-tight tabular">
               {list.loading ? <span className="inline-block h-7 w-32 animate-pulse rounded bg-white/15" /> : formatCurrency(totals.amount)}
             </p>

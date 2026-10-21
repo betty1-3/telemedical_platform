@@ -17,7 +17,8 @@ function capitalise(value: string): string {
 }
 
 /** Turns anything the backend throws into one short, user-facing sentence. */
-export function friendlyMessage(error: unknown, subject = 'this data'): string {
+export function friendlyMessage(error: unknown, subject = 'this data'): string | undefined {
+  if (!error) return undefined;
   if (error instanceof ApiError) {
     if (error.status === 0) return `Unable to reach the server. Check that the backend is running on ${API_BASE_URL}.`;
     if (error.status === 404) return `${capitalise(subject)} is not available from the backend at this route.`;

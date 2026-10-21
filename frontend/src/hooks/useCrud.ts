@@ -19,11 +19,20 @@ export function useCrud(resource: CrudResource, subject: string, onChanged: () =
   const [submitting, setSubmitting] = useState(false);
 
   const save = useCallback(
-    async (id: string | null, body: Row): Promise<boolean> => {
+    async (arg1: string | null | Row, arg2?: Row | string | null): Promise<boolean> => {
       setSubmitting(true);
+      let id: string | null = null;
+      let body: Row;
+      if (typeof arg1 === 'object' && arg1 !== null) {
+        body = arg1 as Row;
+        id = (typeof arg2 === 'string' && arg2) ? arg2 : null;
+      } else {
+        id = (typeof arg1 === 'string' && arg1) ? arg1 : null;
+        body = (arg2 && typeof arg2 === 'object') ? (arg2 as Row) : {};
+      }
       try {
-        if (id) await resource.update(id, body);else
-        await resource.create(body);
+        if (id) await resource.update(id, body);
+        else await resource.create(body);
         toast.success(id ? `${subject[0].toUpperCase()}${subject.slice(1)} updated` : `${subject[0].toUpperCase()}${subject.slice(1)} created`);
         onChanged();
         return true;

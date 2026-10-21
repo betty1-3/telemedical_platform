@@ -5,6 +5,7 @@ import com.hospital.dashboard.exception.ResourceNotFoundException;
 import com.hospital.dashboard.model.Hospital;
 import com.hospital.dashboard.repository.HospitalRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,11 +27,13 @@ public class HospitalService {
                 .orElseThrow(() -> new ResourceNotFoundException("Hospital not found with id " + id));
     }
 
+    @Transactional
     public Hospital create(Hospital hospital) {
         validate(hospital);
         return repository.save(hospital);
     }
 
+    @Transactional
     public Hospital update(Long id, Hospital hospital) {
         validate(hospital);
         getById(id);
@@ -39,6 +42,7 @@ public class HospitalService {
         return hospital;
     }
 
+    @Transactional
     public void delete(Long id) {
         getById(id);
         repository.deleteById(id);

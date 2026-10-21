@@ -1,11 +1,8 @@
 package com.hospital.dashboard.model;
 
-/**
- * Maps to the HOSPITAL table.
- * NOTE: the real Oracle column is "name" (not hospital_name) - kept as the
- * cleaner hospitalName in JSON, see HospitalRepository. There is no single
- * "address" column; it is split into street / area / pincode.
- */
+import java.util.List;
+
+/** Maps to the HOSPITAL table and its child/related entities (phones, affiliated doctors). */
 public class Hospital {
 
     private Long hospitalId;
@@ -14,6 +11,10 @@ public class Hospital {
     private String area;
     private String city;
     private String pincode;
+
+    // Related collections
+    private List<String> phones;
+    private List<DoctorAffiliation> doctors;
 
     public Hospital() { }
 
@@ -34,4 +35,10 @@ public class Hospital {
 
     public String getPincode() { return pincode; }
     public void setPincode(String pincode) { this.pincode = pincode; }
+
+    public List<String> getPhones() { return phones; }
+    public void setPhones(List<String> phones) { this.phones = phones; }
+
+    public List<DoctorAffiliation> getDoctors() { return doctors; }
+    public void setDoctors(List<DoctorAffiliation> doctors) { this.doctors = doctors; }
 }
